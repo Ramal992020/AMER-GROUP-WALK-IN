@@ -2,23 +2,23 @@
 
 /* ══════════════════════════════════════════════════════════
    AMER GROUP — Enterprise Design System (Light)
-   Identity: Corporate Red (#E30613) + White
+   Identity: Corporate Red (#EF0000) + White
    ══════════════════════════════════════════════════════════ */
 
 @theme {
   --font-display: "Cairo", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Cairo", ui-sans-serif, system-ui, sans-serif;
 
-  --color-brand-50: #fff1f2;
-  --color-brand-100: #ffe1e3;
-  --color-brand-200: #ffc8cc;
-  --color-brand-300: #ffa1a8;
-  --color-brand-400: #fb6b76;
-  --color-brand-500: #f23b49;
-  --color-brand-600: #e30613;
-  --color-brand-700: #bf040f;
-  --color-brand-800: #9e0811;
-  --color-brand-900: #830d15;
+  --color-brand-50: #fff0f0;
+  --color-brand-100: #ffe0e0;
+  --color-brand-200: #ffc2c2;
+  --color-brand-300: #ff9999;
+  --color-brand-400: #ff6666;
+  --color-brand-500: #ff3333;
+  --color-brand-600: #ef0000;
+  --color-brand-700: #cc0000;
+  --color-brand-800: #a80000;
+  --color-brand-900: #8a0000;
 
   --color-ink-900: #14171f;
   --color-ink-700: #333a46;
@@ -31,13 +31,13 @@
 }
 
 :root {
-  --brand: #e30613;
-  --brand-dark: #bf040f;
-  --ring: rgba(227, 6, 19, 0.18);
+  --brand: #ef0000;
+  --brand-dark: #cc0000;
+  --ring: rgba(239, 0, 0, 0.18);
   --shadow-sm: 0 1px 2px rgba(20, 23, 31, 0.05);
   --shadow-md: 0 2px 8px -1px rgba(20, 23, 31, 0.07), 0 1px 3px rgba(20, 23, 31, 0.04);
   --shadow-lg: 0 12px 28px -8px rgba(20, 23, 31, 0.12), 0 4px 10px -4px rgba(20, 23, 31, 0.06);
-  --shadow-brand: 0 8px 20px -6px rgba(227, 6, 19, 0.35);
+  --shadow-brand: 0 8px 20px -6px rgba(239, 0, 0, 0.35);
 }
 
 * {
@@ -59,7 +59,7 @@ body {
 }
 
 ::selection {
-  background: rgba(227, 6, 19, 0.15);
+  background: rgba(239, 0, 0, 0.15);
   color: #14171f;
 }
 
@@ -155,7 +155,7 @@ body {
 .btn-secondary {
   background: #fff;
   color: var(--brand);
-  border: 1.5px solid rgba(227, 6, 19, 0.35);
+  border: 1.5px solid rgba(239, 0, 0, 0.35);
 }
 .btn-secondary:hover:not(:disabled) {
   background: #fff1f2;
@@ -234,7 +234,7 @@ body {
 .badge-red {
   background: #fff1f2;
   color: #bf040f;
-  border: 1px solid rgba(227, 6, 19, 0.16);
+  border: 1px solid rgba(239, 0, 0, 0.16);
 }
 .badge-green {
   background: #eefaf3;
@@ -259,18 +259,18 @@ body {
 
 /* ─────────────── Decorative ─────────────── */
 .brand-bar {
-  background: linear-gradient(90deg, #e30613 0%, #ff5b66 55%, #e30613 100%);
+  background: linear-gradient(90deg, #ef0000 0%, #ff5b5b 55%, #ef0000 100%);
 }
 
 .dot-grid {
-  background-image: radial-gradient(rgba(227, 6, 19, 0.11) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(239, 0, 0, 0.11) 1px, transparent 1px);
   background-size: 18px 18px;
 }
 
 .hero-mesh {
   background:
-    radial-gradient(60% 70% at 92% 8%, rgba(227, 6, 19, 0.1) 0%, transparent 62%),
-    radial-gradient(50% 60% at 4% 96%, rgba(227, 6, 19, 0.06) 0%, transparent 60%);
+    radial-gradient(60% 70% at 92% 8%, rgba(239, 0, 0, 0.1) 0%, transparent 62%),
+    radial-gradient(50% 60% at 4% 96%, rgba(239, 0, 0, 0.06) 0%, transparent 60%);
 }
 
 .bg-grid {
@@ -334,13 +334,13 @@ body {
 }
 @keyframes amer-pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(227, 6, 19, 0.32);
+    box-shadow: 0 0 0 0 rgba(239, 0, 0, 0.32);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(227, 6, 19, 0);
+    box-shadow: 0 0 0 10px rgba(239, 0, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(227, 6, 19, 0);
+    box-shadow: 0 0 0 0 rgba(239, 0, 0, 0);
   }
 }
 

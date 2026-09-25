@@ -7,18 +7,33 @@ check-icons.py — يفحص أيقونات التطبيق ويتأكد إنها 
 
 اللي بيتأكد منه:
   • كل ملف ببعد صحيح وبعدد القنوات المناسب (من غير شفافية للأيقونات).
-  • لون الخلفية موحّد على لون العلامة #E30613.
+  • لون الخلفية موحّد على لون العلامة (بيتقرأ من assets/logo-amer-group.svg).
   • مفيش "بكسلات شاذة" بره منطقة اللوجو (بقايا زوايا دائرية أو حدود).
   • حشو متساوي حوالي اللوجو.
   • أيقونة Maskable محتواها جوه دايرة الأمان (80% من العرض).
 """
 import os
+import re
 import struct
 import sys
 import zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BG = (227, 6, 19)  # #E30613
+SVG_LOGO = os.path.join(ROOT, 'assets', 'logo-amer-group.svg')
+
+
+def brand_color():
+    """لون العلامة بيتقرأ من ملف الـ SVG نفسه => مصدر حقيقة واحد،
+    فمستحيل سكربت التوليد وسكربت الفحص يختلفوا."""
+    svg = open(SVG_LOGO, encoding='utf-8').read()
+    m = re.search(r'fill="#([0-9A-Fa-f]{6})"', svg)
+    if not m:
+        raise SystemExit('✗ مش لاقي لون الخلفية في ملف الـ SVG')
+    h = m.group(1)
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+BG = brand_color()
 BG_TOL = 60        # فرق مسموح عن لون الخلفية
 
 
@@ -103,7 +118,7 @@ EXPECTED = {
 }
 
 ok = True
-print('\n  فحص أيقونات التطبيق\n  ' + '─' * 62)
+print(f'\n  فحص أيقونات التطبيق   (لون العلامة #{BG[0]:02X}{BG[1]:02X}{BG[2]:02X})\n  ' + '─' * 62)
 
 for name in FILES:
     path = os.path.join(ROOT, 'public', name)
