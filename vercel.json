@@ -33,19 +33,13 @@
       ]
     },
     {
-      "source": "/icon-192.png",
+      "source": "/(.*)\\.(png|ico)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800, immutable" }
       ]
     },
     {
-      "source": "/icon-512.png",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800, immutable" }
-      ]
-    },
-    {
-      "source": "/apple-touch-icon.png",
+      "source": "/favicon.ico",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800, immutable" }
       ]
