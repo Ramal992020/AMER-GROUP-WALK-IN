@@ -1,10 +1,17 @@
 {
   "name": "Amer Group | منظم الـ Walk-In",
   "short_name": "Amer Group",
+  "description": "Amer Group Operation — منظم الـ Walk-In بنظام Head × Head وأولوية الحضور",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#E30613",
-  "theme_color": "#E30613",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#EF0000",
+  "theme_color": "#EF0000",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -17,6 +24,18 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
