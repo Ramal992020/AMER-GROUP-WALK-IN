@@ -24,6 +24,7 @@ import {
   UserCheck,
   PhoneCall,
   Users,
+  FileSpreadsheet,
 } from 'lucide-react';
 import {
   HEADS as DEFAULT_HEADS,
@@ -60,6 +61,7 @@ import { AttendanceBoard } from './components/AttendanceBoard';
 import { HistoryPanel } from './components/HistoryPanel';
 import { DoneReceipt } from './components/DoneReceipt';
 import { ManageOrgPanel } from './components/ManageOrgPanel';
+import { PorsaidSheet } from './components/PorsaidSheet';
 import { AmerLogo } from './components/AmerLogo';
 import {
   Modal,
@@ -78,7 +80,7 @@ interface DoneInfo {
   next: ComputedTurn | null;
 }
 
-type Tab = 'dashboard' | 'today' | 'log' | 'order' | 'manage';
+type Tab = 'dashboard' | 'today' | 'log' | 'order' | 'excel' | 'manage';
 
 const AUTH_KEY = 'amer-walkin-auth';
 
@@ -87,6 +89,7 @@ const NAV: { id: Tab; label: string; icon: typeof CalendarCheck }[] = [
   { id: 'today', label: 'الحضور', icon: CalendarCheck },
   { id: 'order', label: 'الترتيب', icon: ListOrdered },
   { id: 'log', label: 'السجل', icon: FileText },
+  { id: 'excel', label: 'Excel', icon: FileSpreadsheet },
   { id: 'manage', label: 'الهيكل', icon: UserCog },
 ];
 
@@ -95,6 +98,7 @@ const TITLES: Record<Tab, { title: string; sub: string }> = {
   today: { title: 'الحضور', sub: 'سجّل حضور السيلز وتابع الحالة لحظياً' },
   order: { title: 'الترتيب', sub: 'التناوب بنظام Head × Head وأولوية الحضور' },
   log: { title: 'السجل', sub: 'كل عمليات التوزيع التي تمت اليوم' },
+  excel: { title: 'تقرير عملاء Porsaid', sub: 'أضف بيانات العملاء ثم نزّل ملف Excel بالتنسيق المعتمد' },
   manage: { title: 'الهيكل', sub: 'إدارة الفرق والمزامنة بين الأجهزة' },
 };
 
@@ -1132,6 +1136,14 @@ function WalkInApp({ account, onLogout }: { account: string; onLogout: () => voi
             {/* ═══════ LOG ═══════ */}
             {tab === 'log' && <HistoryPanel history={history} onUndoLast={undoLast} />}
 
+            {tab === 'excel' && (
+              <PorsaidSheet
+                account={account}
+                sales={sales}
+                suggestedConsultant={next?.salesName}
+              />
+            )}
+
             {/* ═══════ ORDER ═══════ */}
             {tab === 'order' && (
               <div className="space-y-4">
@@ -1349,8 +1361,8 @@ function WalkInApp({ account, onLogout }: { account: string; onLogout: () => voi
       )}
 
       {/* ══════════ Mobile bottom nav ══════════ */}
-      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-100 bg-white/95 px-2 pb-2 pt-1.5 backdrop-blur-xl lg:hidden">
-        <div className="mx-auto grid max-w-md grid-cols-5">
+      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-ink-100 bg-white/95 px-1.5 pb-2 pt-1.5 backdrop-blur-xl lg:hidden">
+        <div className="mx-auto grid max-w-lg grid-cols-6">
           {NAV.map((item) => {
             const active = tab === item.id;
             return (
@@ -1362,13 +1374,13 @@ function WalkInApp({ account, onLogout }: { account: string; onLogout: () => voi
               >
                 <span
                   className={cn(
-                    'grid h-7 w-12 place-items-center rounded-lg transition-all',
+                    'grid h-7 w-11 place-items-center rounded-lg transition-all',
                     active ? 'bg-brand-50 text-brand-600' : 'text-ink-400',
                   )}
                 >
-                  <item.icon className="size-[19px]" strokeWidth={active ? 2.5 : 2} />
+                  <item.icon className="size-[18px]" strokeWidth={active ? 2.5 : 2} />
                 </span>
-                <span className={cn('text-[10.5px] font-extrabold', active ? 'text-brand-600' : 'text-ink-400')}>
+                <span className={cn('text-[10px] font-extrabold', active ? 'text-brand-600' : 'text-ink-400')}>
                   {item.label}
                 </span>
               </button>
